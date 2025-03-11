@@ -21,3 +21,5 @@ for i in range(size):
 
 print (f"The array is:{array}")
 
+
+
