@@ -1,0 +1,49 @@
+1) Answer for Array CRUD question:
+class ArrayCRUD:
+    def __init__(self):
+        self.array = []
+
+    def create(self, element):
+        self.array.append(element)
+
+    def retrieve(self):
+        return self.array
+
+    def update(self, index, new_value):
+        if 0 <= index < len(self.array):
+            self.array[index] = new_value
+        else:
+            print("Invalid index!")
+
+    def delete(self, index):
+        if 0 <= index < len(self.array):
+            self.array.pop(index)
+        else:
+            print("Invalid index!")
+
+arr = ArrayCRUD()
+arr.create(10)
+arr.create(20)
+arr.create(30)
+
+print("Array:", arr.retrieve())  
+
+arr.update(1, 50)
+print("Updated Array:", arr.retrieve()) 
+
+arr.delete(0)
+print("Array after deletion:", arr.retrieve())  
+
+
+
+2) Answer for perform linear search in a List:
+
+def l_s(a,t):
+    for index, e in enumerate(a):
+        if e == t:
+            return f"Element found in the index {index}"
+    return "Not found"
+
+a = list(map(int, input("Enter numbers: ").split()))
+t = int(input("number to search: "))
+print(l_s(a,t))
