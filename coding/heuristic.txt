@@ -1,0 +1,56 @@
+There is a survey team , they have to visit multiple socities, we have to find the shorest possible path to travel
+and the constraint is they need to visit to each the each society atleast once and return to branch office.
+
+MainPoint = office
+MainPoint => S1 : 12KM
+MainPoint => S2 : 30KM
+MainPoint => S3 : 25KM
+MainPoint => S4 : 20KM
+
+There are 4 societies,
+S1
+S2
+S3
+S4
+
+
+
+
+expected sol,
+Start
+Read (societyl)
+find(distance of nearest societies within time range)
+if (condition satisfies then)
+process(survey)
+
+return to MainPoint
+stop
+
+
+Start
+Read (a, b, c)
+d = b*b-4*a*c
+print(d)
+stop
+
+#program for the question:
+a = int(input())
+b = int(input())
+c = int(input())
+
+d = b * b - 4 * a * c
+print(d)
+
+
+
+Exercises:
+1. A bear starting from the point P, walked one mile due south,
+Then he changed direction and walked one mile due east. Then he
+turned again to the left and walked one mile due north and arrived
+at point P he started from what was the color of the bear?
+
+2. Two towns A and B are 3 km s apart Itis proposed to build
+a new school serving 100 students in town A and 50 students
+in town B. How far from town A should the school be built
+if the total travel distance by all 150 students is to be as small as
+possible?

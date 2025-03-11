@@ -1,0 +1,116 @@
+Exercises:
+1. A bear starting from the point P, walked one mile due south,
+Then he changed direction and walked one mile due east. Then he
+turned again to the left and walked one mile due north and arrived at point P he started from what was the color of the bear?
+ 
+2. Two towns A and B are 3 km s apart It is proposed to build 
+a new school serving 100 students in town A and 50 students
+in town B. How far from town A should the school be built 
+if the total travel distance by all 150 students is to be as small as
+possible?
+ 
+3. A traveller arrives at hotel he has no money but only a silver chain consisting of  6 links. He uses one link to pay for each day 
+spent at the hotel but the hotel manager agrees to accept no more than one broken link
+How should the traveller cut up the chain in order to settle the
+amount with the hotel manager on a daily basis
+     1. what is the least number of links that have to be cut if the traveller stays 100 days at the hotel  and has a chain cosisting
+of 100 links? what is the answer in general case n days and n links
+ 
+4. Rearrange the letters in the words new door to make one word
+ 
+5.  do divide and conquer  6   5  1  4  3  2
+
+6.  Draw flowchart for calculating simple interest
+
+
+
+Answers:
+
+6. flowchart:
+
+(start) oval
+   |
+ input P
+   |
+ input R
+   |
+ input T
+   |
+ SI = (P*R*T)/100
+   |
+ output
+   |
+ (end) oval
+
+
+5. Divide and Conquer:
+
+Start
+1. Split array [6, 5, 1, 4, 3, 2] into [6, 5, 1] and [4, 3, 2]
+2. Split [6, 5, 1] into [6] and [5, 1]
+3. Split [5, 1] into [5] and [1]
+4. Merge [5] and [1] to get [1, 5]
+5. Merge [6] and [1, 5] to get [1, 5, 6]
+6. Split [4, 3, 2] into [4] and [3, 2]
+7. Split [3, 2] into [3] and [2]
+8. Merge [3] and [2] to get [2, 3]
+9. Merge [4] and [2, 3] to get [2, 3, 4]
+10. Merge [1, 5, 6] and [2, 3, 4] to get [1, 2, 3, 4, 5, 6]
+End
+
+
+4. Word Arrangements:
+start
+seperate all the letters in the word -> "new door": n, e, w, d, o, o, r
+Rearrange these letters
+Form "one word"
+End
+
+
+3. chain-cutting:
+Start
+For a 6-link chain, we need to cut 2 links
+Cut the 2nd and 4th links , Now we have four pieces
+three single links and one 3-link piece are the pieces we have.
+Give the hotel manager one single link.
+Ask for your single link back, give the manager two connected links on second day.
+Give another single link (manager now has links worth 3 days)
+Get all three links back, give the 3-link piece
+Give one single link.
+Give the remaining two connected links.
+now paid for all 6 days
+End
+
+
+2. School Distance:
+Start
+Town A has 100 students 
+Town B has 50 students
+
+There are 2 ways regarding the solution,
+1) If the distance should be equal for all students (considering as single student)
+then, the distance for school would be 1.5 kms
+
+2) If it considered for whole scenrio,
+the school should be placed closer to the town with more students. The formula for optimal placement is:
+
+Distance from A = Total Distance × (Students in B)
+                  --------------------------------
+                          Total Students
+​
+ 
+Substituting values:
+(3*50)/150 = 1km
+
+
+1)The Bear's Color
+Start
+Set P as the starting point of the bear.
+The bear walks 1 mile south.
+The bear walks 1 mile east.
+The bear walks 1 mile north, returning to P.
+If the bear returns to P, then the path must have formed a closed loop.
+The only location where such a closed loop occurs is near the North Pole.
+Bears found at the North Pole are polar bears, which are white.
+Output: "The bear is white."
+End

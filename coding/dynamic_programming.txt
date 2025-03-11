@@ -1,0 +1,23 @@
+
+Example:
+You have three jugs, which we will call A, B, and C. Jug A can hold exactly 8
+cups of water, B can hold exactly 5 cups, and C can hold exactly 3 cups. A is
+filled to capacity with 8 cups of water. B and C are empty. We want you to find
+a way of dividing the contents of A equally between A and B so that both have 4
+cups. You are allowed to pour water from jug to jug.
+
+solution:
+
+Step 1: First fill the 8L bucket full.
+Step 2: Pour the water from 8L bucket to 5L bucket. Water remaining in 8L bucket is 3L.
+Step 3: Pour the water from 5L bucket to 3L bucket. Water remaining in 5L bucket is 2L.
+Step 4: Pour the water from 3L bucket to 8L bucket. Water in 8L bucket is 6L now and 3L
+bucket gets empty.
+Step 5: Pour the water from 5L bucket to 3L bucket. Water in 3L bucket is 2L now and 5L
+bucket gets empty.
+Step 6: Pour the water from 8L bucket to 5L bucket. Water remaining in 8L bucket is IL 5L
+bucket gets full.
+Step 7: Pour the waterkrom 5L bucket to 3L bucket. Water remaining in 5L bucket is now
+4L as 3L bucket already had 2L of water and when we poured water from 51 bucket to 3L
+bucket we poured IL of water from 5L bucket and thus the remaining water in 5L bucket is
+now 4L.
