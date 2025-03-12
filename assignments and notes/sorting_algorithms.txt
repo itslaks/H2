@@ -1,0 +1,138 @@
+#Bubble sort
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n - 1):
+        for j in range(n - i - 1):
+            if arr[j] > arr[j + 1]:  # Swap if the element is greater than the next
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+# Example usage
+arr = [5, 3, 8, 6, 2]
+bubble_sort(arr)
+print(arr)  # Output: [2, 3, 5, 6, 8]
+ 
+
+How Bubble Sort Works:
+Compare adjacent elements → Swap if they are in the wrong order.
+Largest element moves to the right in each pass.
+Repeat the process until the entire list is sorted.
+
+
+
+#Insertion sort
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]  # Shift elements to the right
+            j -= 1
+        arr[j + 1] = key  # Insert key at the correct position
+
+# Example usage
+arr = [5, 3, 8, 6, 2]
+insertion_sort(arr)
+print(arr)  # Output: [2, 3, 5, 6, 8]
+
+
+How Insertion Sort Works:
+Start with the second element and assume the first is already sorted.
+Compare the current element (key) with the sorted part (left side).
+Shift larger elements to the right and insert key in the correct position.
+Repeat for all elements.
+
+
+
+#selection sort
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n - 1):
+        min_index = i  # Assume the first unsorted element is the smallest
+        for j in range(i + 1, n):
+            if arr[j] < arr[min_index]:  # Find the smallest element
+                min_index = j
+        arr[i], arr[min_index] = arr[min_index], arr[i]  # Swap
+
+# Example usage
+arr = [5, 3, 8, 6, 2]
+selection_sort(arr)
+print(arr)  # Output: [2, 3, 5, 6, 8]
+  
+
+How Selection Sort Works:
+Find the smallest element in the unsorted part.
+Swap it with the first element of the unsorted part.
+Move to the next element and repeat until the list is sorted.
+
+
+
+#merge sort
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr  # Base case: already sorted
+
+    mid = len(arr) // 2  # Split the array
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+
+    return merge(left, right)  # Merge sorted halves
+
+def merge(left, right):
+    result = []
+    i = j = 0
+
+    while i < len(left) and j < len(right):  # Merge step
+        if left[i] < right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+
+    result.extend(left[i:])  # Add remaining elements
+    result.extend(right[j:])
+    return result
+
+# Example usage
+arr = [5, 3, 8, 6, 2]
+arr = merge_sort(arr)
+print(arr)  # Output: [2, 3, 5, 6, 8]
+  
+
+How Merge Sort Works:
+Divide: Split the array into two halves.
+Conquer: Recursively sort both halves.
+Merge: Combine the sorted halves into a single sorted array.
+
+
+
+#Quick sort
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr  # Base case: already sorted
+
+    pivot = arr[len(arr) // 2]  # Choose the middle element as pivot
+    left = [x for x in arr if x < pivot]  # Elements smaller than pivot
+    middle = [x for x in arr if x == pivot]  # Elements equal to pivot
+    right = [x for x in arr if x > pivot]  # Elements greater than pivot
+
+    return quick_sort(left) + middle + quick_sort(right)  # Recursively sort & combine
+
+# Example usage
+arr = [5, 3, 8, 6, 2]
+arr = quick_sort(arr)
+print(arr)  # Output: [2, 3, 5, 6, 8]
+
+
+How Quick Sort Works:
+Choose a Pivot: Select the middle element.
+Partition:
+Elements smaller go to the left.
+Elements equal stay in the middle.
+Elements greater go to the right.
+Recursively Sort the left and right partitions.
+Combine everything into a sorted list.
+
+
+
+
