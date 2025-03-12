@@ -124,6 +124,8 @@ arr = quick_sort(arr)
 print(arr)  # Output: [2, 3, 5, 6, 8]
 
 
+
+
 How Quick Sort Works:
 Choose a Pivot: Select the middle element.
 Partition:
