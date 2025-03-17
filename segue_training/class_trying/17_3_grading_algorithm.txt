@@ -1,0 +1,8 @@
+start
+get input mark
+if mark >= 90, print grade O
+elif mark >= 80 and < 90, print grade A
+elif mark >= 70 and < 80, print grade B
+elif mark >= 60 and < 70, print grade C
+else print grade F 
+end
