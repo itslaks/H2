@@ -1,0 +1,36 @@
+Array
+Uses:-
+lab allocation system
+jewel allocation in shop
+
+Limitations:-
+size is fixed
+ineffficiency finding4
+
+ 
+LinkedList
+Uses:- 
+serfing the webpage
+touching notification of whatsapp
+
+Limitations:-
+cannot random access
+
+ 
+Stack
+Uses:-
+pringles 
+selling head rest pillows
+
+Limitations:-
+limited access 
+
+
+ 
+Queue
+Uses:-
+booking IPL tickets
+preparing food in outlets
+
+Limitations:-
+slow element removal

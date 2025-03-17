@@ -1,0 +1,46 @@
+Bubble Sort:
+42 35 12 77 5 101     <------- Question
+35 42 12 77 5 101
+35 12 42 77 5 101
+12 35 42 77 5 101
+12 35 42 5 77 101
+12 35 5 42 77 101
+12 5 35 42 77 101
+5 12 35 42 77 101     <------- Finally sorted list
+
+
+Insertion Sort:
+8 6 4 20 24 2 10 12
+6 8 4 20 24 2 10 12
+4 6 8 20 24 2 10 12
+4 6 8 20 24 2 10 12
+2 4 6 8 20 24 10 12
+2 4 6 8 10 20 24 12
+2 4 6 8 10 12 20 24
+
+
+Quick sort:
+12 2 3 11 10 6 8 9 7
+
+choosing 7 as pivot:
+so,
+
+2 3 6 7 12 11 10 8 9
+
+let's take right side because it is not sorted,
+
+12 11 10 8 9
+
+let's take 10 as pivot,
+so,
+
+8 9 10 12 11
+
+keeping 11 as pivot,
+so,
+
+11 12
+
+finally sorted array,
+
+2 3 6 7 8 9 10 11 12
