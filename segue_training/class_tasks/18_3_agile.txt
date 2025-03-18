@@ -1,0 +1,45 @@
+TASK - make SDLC for food delivery application.
+
+Requirement Gathering & Identify key features:
+User login, restaurant listings, food ordering, payment integration, delivery tracking, reviews.
+
+System Design architecture:
+Frontend (Mobile/Web App), Backend (Database, API), Delivery System, Admin Panel.
+
+Development	Implement core functionalities:
+User interface, order processing, real-time tracking, notifications, payment gateway.
+
+Testing	Conduct unit, integration, and system testing:
+Ensure smooth user experience, secure transactions, and bug-free performance.
+
+Deployment	Launch the app on platforms (iOS, Android, Web)
+
+Maintenance & Updates:
+Monitor performance, fix bugs, and introduce new features like AI recommendations
+
+
+Let's use iterative method,
+
+Iteration 1: Basic Developement,
+ 
+- User Registration & Login  
+- Browse Restaurants & Menus  
+- Place Orders  
+
+
+Iteration 2: Order Tracking & Restaurant Dashboard
+
+- Live Order Tracking (GPS)  
+- Restaurant Panel for Order Management  
+
+
+Iteration 3: Adding more payment options
+
+- Online Payments (Credit/Debit, UPI, Wallets, slice cards)  
+ 
+
+Iteration 4: AI-Based recommendations
+
+- Personalized Food Recommendations  
+
+

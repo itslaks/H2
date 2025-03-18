@@ -2,4 +2,4 @@ use only in powershell:
 git add . ; git commit -m "certain-date" ; git push origin main
 
 example:
-git add . ; git commit -m "17-03-25" ; git push origin main
+git add . ; git commit -m "18-03-25" ; git push origin main
