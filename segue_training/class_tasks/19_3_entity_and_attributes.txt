@@ -1,0 +1,34 @@
+Entity and Attributes in DBMS  
+
+Entity:  
+An entity is any real-world object that has a distinct identity and can be stored in a database. It can be a physical object, a concept, or an event. Entities are classified into:  
+- Strong Entity: Exists independently (e.g., Employee, Student).  
+- Weak Entity: Depends on another entity and lacks a primary key (e.g., Order Items in an Order).  
+
+Example:  
+In a payroll management system, "Employee" is an entity because it represents a real-world person working in a company.  
+
+Attributes  
+Attributes define the properties or characteristics of an entity. Each entity can have multiple attributes, categorized as:  
+- Simple Attribute: Holds a single value (e.g., Age, Name).  
+- Composite Attribute: Can be divided into smaller attributes (e.g., Full Name → First Name, Last Name).  
+- Derived Attribute: Computed from another attribute (e.g., Age from Date of Birth).  
+- Multi-valued Attribute: Can have multiple values (e.g., Phone Numbers).  
+- Key Attribute: A unique identifier (e.g., Employee ID).  
+
+Real-World Example: University Database  
+
+Entity: Student  
+- Student_ID (Key Attribute)  
+- Name  
+- Age  
+- Email  
+- Course  
+
+Entity: Course  
+- Course_ID (Key Attribute)  
+- Course_Name  
+- Duration  
+- Fees  
+
+In a DBMS, each entity becomes a table, and attributes become the table’s column

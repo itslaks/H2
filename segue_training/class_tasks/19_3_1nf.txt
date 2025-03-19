@@ -1,0 +1,13 @@
+stuId StuName stuSpc
+1	Shruti	English
+1	Shruti	Maths
+1	Shruti	AI
+2	Radhe	Hindi
+2	Radhe	Science
+3	Krishna	SST
+3	Krishna	Computer
+4	Nidhi	Instrumentation
+4	Nidhi	Electronics
+5	Raja	Mechanical
+5	Raja	Marathi
+5	Raja	Kannada

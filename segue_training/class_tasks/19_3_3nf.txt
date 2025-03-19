@@ -1,0 +1,9 @@
+EMP ID     Employee_Name        Rate_group
+100            charles               A
+101            James                 B
+102            jenifer               A
+
+
+Rate_group    Hourly_rate
+A                  $1000
+B                  $500

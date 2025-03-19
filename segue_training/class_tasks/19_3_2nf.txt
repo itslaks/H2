@@ -1,0 +1,16 @@
+stID	Name	Grade
+1	 Princy	     4
+2	 Dhani	     5
+3	 Dhanishka	 7
+
+
+TeacherID	TeacherName
+3	        Sudha
+2	        Murli
+1	        Kalpesh
+
+
+stID	TeacherID
+1	      3
+2	      2
+3	      1
