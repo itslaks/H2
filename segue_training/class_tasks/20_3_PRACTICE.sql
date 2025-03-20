@@ -153,6 +153,25 @@ exec sp_rename to rename the table
 
 DELETE FROM IPL WHERE TOPSCORE < 200;
 
+UPDATE IPL SET TeamCaptain = 'DHONI' WHERE TeamName = 'CSK';
+
+SELECT * FROM IPL;
+
+SELECT TeamName FROM IPL WHERE TOPSCORE > 210;
+
+SELECT * FROM IPL WHERE TeamCaptain in ('pant','DHONI');
+
+SELECT * FROM IPL WHERE TeamCaptain not in ('pant','DHONI');
+
+SELECT * FROM IPL WHERE TOPSCORE BETWEEN 200 AND 210;
+
+
+
+
+
+
+
+
 
 
 
