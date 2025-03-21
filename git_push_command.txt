@@ -1,5 +1,0 @@
-use only in powershell:
-git add . ; git commit -m "certain-date" ; git push origin main
-
-example:
-git add . ; git commit -m "20-03-25" ; git push origin main
