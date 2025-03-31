@@ -111,7 +111,7 @@ SELECT * FROM Vehicle WHERE make = 'Mercedes';
 --2. Delete a specific customer and all associated leases and payments.
 DELETE FROM Customer WHERE customerID = 3;
 
-SELECT * FROM Customer;
+SELECT * FROM Payment;
 
 
 --3.Rename the "paymentDate" column in the Payment table to "transactionDate".
@@ -230,24 +230,4 @@ SELECT V.vehicleID, V.make, V.model,
 FROM Vehicle V
 LEFT JOIN Lease L ON V.vehicleID = L.vehicleID
 ORDER BY V.vehicleID;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
