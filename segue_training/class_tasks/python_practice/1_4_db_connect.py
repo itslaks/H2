@@ -1,11 +1,3 @@
-# import pyodbc
-# import datetime
-
-# conn = pyodbc.connect('DRIVER = (SQLSERVER); SERVER =;DATABASE = myproject;UID=HP_PAVILION\SQLEXPRESS01;PWD=')
-# cursor = conn.execute
-
-# questions = [
-
 import pyodbc
 
 
