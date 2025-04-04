@@ -7,10 +7,15 @@ The **Payroll Management System (PayXpert)** is a **Python** and **MSSQL-based**
 ## 📌 Features
 
 ✅ **Employee Management** (Add, Retrieve, Update, Delete)
+
 ✅ **Payroll Processing** (Salary, Overtime, Deductions, Net Salary Calculation)
+
 ✅ **Tax Calculation** (Automated Tax Computation & Storage)
+
 ✅ **Financial Reporting** (Payroll and Tax Summary)
+
 ✅ **MSSQL Database Integration**
+
 ✅ **Exception Handling and Unit Testing**
 
 ---
