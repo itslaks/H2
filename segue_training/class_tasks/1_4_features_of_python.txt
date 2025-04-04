@@ -1,0 +1,19 @@
+Late Binding in Functions – Python uses late binding, meaning variables inside functions are resolved at runtime, allowing flexibility in function design.
+
+Coroutines and Generators – Python has built-in support for coroutines using async and await, making asynchronous programming easier.
+
+Memory Management Using Reference Counting & Garbage Collection – Python uses both reference counting and a cyclic garbage collector to manage memory efficiently.
+
+Duck Typing – Instead of enforcing strict data types, Python follows the principle of “If it looks like a duck and quacks like a duck, it must be a duck.”
+
+Multi-Paradigm Support – Python supports procedural, object-oriented, and functional programming, making it highly versatile.
+
+Inspired by ABC Language – Python was influenced by the ABC programming language but was designed to overcome its limitations.
+
+Released on Christmas (1991) – Python 0.9.0 was released by Guido van Rossum on December 25, 1991.
+
+First Python Program – The first Python program was an implementation of an interpreter for the language itself.
+
+Monty Python Influence – The name “Python” was inspired by the British comedy group Monty Python, not the snake.
+
+Python 3 Broke Compatibility – Python 3 (released in 2008) was not backward-compatible with Python 2, causing a major transition period.
