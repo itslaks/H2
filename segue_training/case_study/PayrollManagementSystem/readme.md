@@ -1,9 +1,11 @@
 # Payroll Management System (PayXpert)
 
 ## 📌 Project Overview
+
 The **Payroll Management System (PayXpert)** is a **Python** and **MSSQL-based** application designed to **manage employee payroll, tax calculations, and financial reporting** efficiently. It provides **CRUD operations** for employees, payroll processing, and tax calculations with structured database integration.
 
 ## 📌 Features
+
 ✅ **Employee Management** (Add, Retrieve, Update, Delete)
 ✅ **Payroll Processing** (Salary, Overtime, Deductions, Net Salary Calculation)
 ✅ **Tax Calculation** (Automated Tax Computation & Storage)
@@ -14,6 +16,7 @@ The **Payroll Management System (PayXpert)** is a **Python** and **MSSQL-based**
 ---
 
 ## 📌 Technologies Used
+
 - **Python 3.x** (Backend Logic)
 - **Microsoft SQL Server (MSSQL)** (Database)
 - **PyODBC** (Database Connectivity)
@@ -23,6 +26,7 @@ The **Payroll Management System (PayXpert)** is a **Python** and **MSSQL-based**
 ---
 
 ## 📌 Project Structure
+
 ```
 PayrollManagementSystem/
 │── database/               # Stores database-related files
@@ -66,26 +70,29 @@ PayrollManagementSystem/
 ```
 
 ## 📌 Project Directory Structure
-|-------------------------|---------------------------------------------------------------------|----------------------------------------------|
-| **Folder/File**         | **Purpose**                                                         | **Example Files**                            |
-|-------------------------|---------------------------------------------------------------------|----------------------------------------------|
-| 📂 **database/**        | Contains SQL scripts for creating database tables.                 | `payxpert_schema.sql`                         |
-| 📂 **entity/**          | Defines data models (Employee, Payroll, etc.) without business logic. | `Employee.py`, `Payroll.py`, `Tax.py`      |
-| 📂 **dao/**             | Handles database operations (CRUD operations).                     | `EmployeeDAO.py`, `PayrollDAO.py`             |
-| 📂 **service/**         | Contains business logic (Payroll calculation, Tax deduction, etc.). | `EmployeeService.py`, `PayrollService.py`    |
-| 📂 **exception/**       | Custom exception handling classes.                                 | `DatabaseConnectionException.py`              |
-| 📂 **util/**            | Contains utility files for database connection and input validation. | `DBConnUtil.py`                             |
-| 📂 **main/**            | Entry point of the system, contains the menu-driven interface.      | `MainModule.py`                              |
-| 📂 **reports/**         | Stores generated reports in CSV or PDF format.                     | `payroll_report.csv`, `tax_report.pdf`        |
-| 📂 **tests/**           | Unit test files for testing services and DAOs.                     | `test_Employee.py`, `test_Payroll.py`         |
-| 📄 **requirements.txt** | Lists required Python dependencies (like `pyodbc`).                 | `pyodbc`, `unittest`                         |
-| 📄 **README.md**        | Documentation explaining the project and how to run it.             | Setup instructions, usage guide              |
-|-------------------------|---------------------------------------------------------------------|---------------------------------------------- |
+
+
+| **Folder/File**        | **Purpose**                                                     | **Example Files**                       |
+| ---------------------------- | --------------------------------------------------------------------- | --------------------------------------------- |
+| 📂**database/**        | Contains SQL scripts for creating database tables.                    | `payxpert_schema.sql`                       |
+| 📂**entity/**          | Defines data models (Employee, Payroll, etc.) without business logic. | `Employee.py`, `Payroll.py`, `Tax.py`   |
+| 📂**dao/**             | Handles database operations (CRUD operations).                        | `EmployeeDAO.py`, `PayrollDAO.py`         |
+| 📂**service/**         | Contains business logic (Payroll calculation, Tax deduction, etc.).   | `EmployeeService.py`, `PayrollService.py` |
+| 📂**exception/**       | Custom exception handling classes.                                    | `DatabaseConnectionException.py`            |
+| 📂**util/**            | Contains utility files for database connection and input validation.  | `DBConnUtil.py`                             |
+| 📂**main/**            | Entry point of the system, contains the menu-driven interface.        | `MainModule.py`                             |
+| 📂**reports/**         | Stores generated reports in CSV or PDF format.                        | `payroll_report.csv`, `tax_report.pdf`    |
+| 📂**tests/**           | Unit test files for testing services and DAOs.                        | `test_Employee.py`, `test_Payroll.py`     |
+| 📄**requirements.txt** | Lists required Python dependencies (like `pyodbc`).                 | `pyodbc`, `unittest`                      |
+| 📄**README.md**        | Documentation explaining the project and how to run it.               | Setup instructions, usage guide               |
+|                              |                                                                       |                                               |
 
 ---
 
 ## 📌 Installation Guide
+
 ### **1️⃣ Prerequisites**
+
 - Install **Python 3.x**
 - Install **Microsoft SQL Server** (Ensure you have **MSSQL running**)
 - Install dependencies
@@ -97,6 +104,7 @@ pip install -r requirements.txt
 ---
 
 ### **2️⃣ Setting up the Database**
+
 1. Open **Microsoft SQL Server Management Studio (SSMS)**.
 2. Run the SQL schema file to create tables:
 
@@ -105,6 +113,7 @@ database/PayXpert_schema.sql
 ```
 
 3. Update **Database Connection Settings** in `util/DBConnUtil.py`:
+
 ```python
 conn = pyodbc.connect(
     "DRIVER={SQL Server};"
@@ -118,7 +127,9 @@ conn = pyodbc.connect(
 ---
 
 ### **3️⃣ Running the Application**
+
 Run the main module:
+
 ```bash
 python main/MainModule.py
 ```
@@ -126,25 +137,28 @@ python main/MainModule.py
 ---
 
 ## 📌 Usage Guide
+
 ### **1️⃣ Employee Management**
+
 - Add employees by entering details.
 - View employee details.
 
 ### **2️⃣ Payroll Processing**
+
 - Generate payroll by providing **salary, overtime, deductions**.
 - View payroll reports.
 
 ### **3️⃣ Tax Calculation**
+
 - Calculate tax based on **income and tax rules**.
 - Store tax details for reporting.
 
 ---
 
 ## 📌 Unit Testing
+
 Run unit tests to validate the functionalities:
+
 ```bash
 python -m unittest discover tests
 ```
-
-
-
