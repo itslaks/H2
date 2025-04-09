@@ -1,0 +1,65 @@
+1) Initialize a new GIT repo:------
+git init
+
+2)Setup and config:-
+git config --global user.name "myname"
+git config --global user.email "myemail"
+
+3) Clone the Existing repo:-
+git clone "repo url"
+
+4) Check status
+git status
+
+5) Add file
+git add .
+git add filename
+
+6) Commit staged changes:--
+git commit -m "message"
+
+7) Branching:-
+Git branch   (list the branches)
+Git branch branchName (Create branch)
+Git checkout new-branch(switch to branch)
+Git checkout -b new-branch-name(switch to branch)
+
+8) delete----
+git branch -r
+git push origin --delete Hexaware-demo
+
+git branch -d branch-name
+git branch -D branch-name
+
+9) Creating Repo
+a) creating repo locally:--
+	mkdir dirname
+	cd dirname
+	git init
+---make your first commit
+	git add .
+	git commit -m "first commit"
+
+b)creating a GitHub repo
+go to GitHub website
+click on +
+new repository->fill details and create new repository
+
+c) connecting local repo with GitHub 
+git remote add origin giturl
+git branch -M main
+git push -u origin main
+
+10) Push
+whenever we make any changes in local repo first we need to commit it in local repo using
+git commit -m "message"
+git push  (this will push the changes to remote git hub directory)
+
+
+----things caused confusion today was
+1) why i need to add every time, i just changed some text in file
+--- git will not automatically track our changes , every time after making changes we have to use git add . (it tells i want to include these changes in my next commit)
+
+2) delete remote repo and local repo having different commands and working
+ ---look at the delete commands given above
+
