@@ -173,10 +173,15 @@ After running `MainModule.py`, the console-based menu will appear:
 ## 🚀 Features Highlight
 
 ✔️ Clean DAO Structure for Separation of Concerns
+
 ✔️ Centralized Database Connection Utility
+
 ✔️ Proper Exception Handling
+
 ✔️ CRUD Operations on All Modules
+
 ✔️ Fully Menu-driven User Interface
+
 ✔️ SQL Integrated System
 
 ---
