@@ -15,7 +15,7 @@ def employee_menu():
         print("\n--- Employee Menu ---")
         print("1. Add Employee")
         print("2. View Employee by ID")
-        print("3. View All Employees")
+        print("3. View All Employees Details:")
         print("4. Update Employee")
         print("5. Delete Employee")
         print("6. Back to Main Menu")

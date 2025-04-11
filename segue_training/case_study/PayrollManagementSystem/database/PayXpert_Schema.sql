@@ -3,7 +3,7 @@ USE PayXpert;
 
 CREATE TABLE Employee (
     EmployeeID INT PRIMARY KEY IDENTITY(1,1),
-    FirstName NVARCHAR(50),
+    FirstName NVARCHAR(51),
     LastName NVARCHAR(50),
     DateOfBirth DATE,
     Gender NVARCHAR(10),
