@@ -75,3 +75,4 @@ INSERT INTO Appointment VALUES
 
 
 
+SELECT * FROM Appointment;
