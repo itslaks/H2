@@ -31,11 +31,11 @@ def main():
 
     while True:
         print("\n--- Hospital Management System ---")
-        print("1. Get Appointment by ID")
-        print("2. Get Appointments for Patient")
-        print("3. Get Appointments for Doctor")
-        print("4. Schedule Appointment")
-        print("5. Update Appointment")
+        print("1. Get Appointment by Appointment ID")
+        print("2. Get Appointments for Patient ID")
+        print("3. Get Appointments for Doctor ID ")
+        print("4. Schedule new Appointment")
+        print("5. Update Exisiting Appointment")
         print("6. Cancel Appointment")
         print("7. Exit")
         choice = input("Enter choice: ")
