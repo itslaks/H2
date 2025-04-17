@@ -1,5 +1,5 @@
 import pyodbc
-from dao.ihospital_service import IHospitalService  # Updated import path
+from dao.ihospital_service import IHospitalService  
 from entity.appointment import Appointment
 from exception.patient_not_found import PatientNumberNotFoundException
 from util.db_con import DBConnUtil
