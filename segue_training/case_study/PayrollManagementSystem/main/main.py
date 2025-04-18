@@ -61,11 +61,11 @@ def employee_menu():
     dao = EmployeeDAO()
     while True:
         print("\n--- Employee Menu ---")
-        print("1. Add Employee")
-        print("2. View Employee by ID")
-        print("3. View All Employees")
-        print("4. Update Employee")
-        print("5. Delete Employee")
+        print("1. Add New Employee:")
+        print("2. View Employee by ID:")
+        print("3. View All Employees:")
+        print("4. Update Employee:")
+        print("5. Delete Employee:")
         print("6. Back to Main Menu")
 
         try:
@@ -183,11 +183,11 @@ def payroll_menu():
     dao = PayrollDAO()
     while True:
         print("\n--- Payroll Menu ---")
-        print("1. Add Payroll")
-        print("2. View Payroll by ID")
-        print("3. View All Payrolls")
-        print("4. Update Payroll")
-        print("5. Delete Payroll")
+        print("1. Add New Payroll:")
+        print("2. View Payroll by ID:")
+        print("3. View All Payrolls:")
+        print("4. Update Payroll:")
+        print("5. Delete Payroll:")
         print("6. Back to Main Menu")
 
         try:
@@ -293,12 +293,12 @@ def tax_menu():
     dao = TaxDAO()
     while True:
         print("\n--- Tax Menu ---")
-        print("1. Add Tax Record")
-        print("2. View Tax by ID")
-        print("3. View All Tax Records")
-        print("4. Update Tax Record")
-        print("5. Delete Tax Record")
-        print("6. Back to Main Menu")
+        print("1. Add New Tax Record:")
+        print("2. View Tax by ID:")
+        print("3. View All Tax Records:")
+        print("4. Update Tax Record:")
+        print("5. Delete Tax Record:")
+        print("6. Back to Main Menu:")
 
         try:
             choice = int(input("Enter your choice: "))
@@ -391,7 +391,7 @@ def financial_record_menu():
     dao = FinancialDAO()
     while True:
         print("\n--- Financial Record Menu ---")
-        print("1. Add Financial Record")
+        print("1. Add New Financial Record")
         print("2. View Financial Record by ID")
         print("3. View All Financial Records")
         print("4. Update Financial Record")
@@ -492,10 +492,10 @@ def financial_record_menu():
 def main():
     while True:
         print("\n==== PayXpert Payroll Management System ====")
-        print("1. Employee Menu")
-        print("2. Payroll Menu")
-        print("3. Tax Menu")
-        print("4. Financial Record Menu")
+        print("1. View Employee Menu")
+        print("2. View Payroll Menu")
+        print("3. View Tax Menu")
+        print("4. View Financial Record Menu")
         print("5. Exit")
 
         try:
