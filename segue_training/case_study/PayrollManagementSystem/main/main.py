@@ -17,6 +17,46 @@ from exception.exception import (
 )
 
 
+def display_record(record, title=None):
+    """Helper function to display a record in a consistent format"""
+    if title:
+        print(f"\n--- {title} ---")
+    
+    record_id_field = None
+    for field in ["employee_id", "payroll_id", "tax_id", "record_id"]:
+        if hasattr(record, field) and getattr(record, field) is not None:
+            record_id_field = field
+            break
+    
+    if record_id_field:
+        # Highlight the ID field with asterisks for better visibility
+        print(f"\n*** {record_id_field.replace('_', ' ').title()}: {getattr(record, record_id_field)} ***")
+    
+    for field, value in vars(record).items():
+        print(f"{field}: {value}")
+    
+    print("-" * 40)
+
+
+def display_records(records, title=None):
+    """Helper function to display multiple records in a consistent format"""
+    if title:
+        print(f"\n--- {title} ---")
+    
+    if not records:
+        print("No records found.")
+        return
+    
+    for record in records:
+        display_record(record)
+
+
+def confirm_action(message="Are you sure you want to proceed? (y/n): "):
+    """Helper function to confirm critical actions"""
+    response = input(message).strip().lower()
+    return response == 'y' or response == 'yes'
+
+
 def employee_menu():
     dao = EmployeeDAO()
     while True:
@@ -46,37 +86,31 @@ def employee_menu():
                     input("Termination Date (YYYY-MM-DD or press Enter for None): ") or None
                 )
                 dao.add_employee(emp)
-                print("Employee added successfully.")
+                print("\n✅ Employee added successfully!")
+                
+                # Display the newly added employee with its ID in a more visible format
+                added_emp = dao.get_employee_by_id(emp.employee_id)
+                if added_emp:
+                    display_record(added_emp, "NEW EMPLOYEE RECORD - ASSIGNED ID")
+                    print(f"\n📌 IMPORTANT: Remember employee ID #{added_emp.employee_id} for future reference!")
 
             elif choice == 2:
                 emp_id = int(input("Enter Employee ID: "))
                 emp = dao.get_employee_by_id(emp_id)
                 if emp:
-                    print(f"\nEmployee ID: {emp.employee_id}")
-                    for field, value in vars(emp).items():
-                        print(f"{field}: {value}")
+                    display_record(emp, "Employee Details")
                 else:
                     raise EmployeeNotFoundException(f"Employee with ID {emp_id} not found.")
 
             elif choice == 3:
                 employees = dao.get_all_employees()
-                if not employees:
-                    print("No employees found.")
-                else:
-                    for emp in employees:
-                        print(f"\nEmployee ID: {emp.employee_id}")
-                        for field, value in vars(emp).items():
-                            print(f"{field}: {value}")
-                        print("-" * 40)
+                display_records(employees, "All Employees")
 
             elif choice == 4:
                 emp_id = int(input("Enter Employee ID to Update: "))
                 emp = dao.get_employee_by_id(emp_id)
                 if emp:
-                    print("\nCurrent Employee Details:")
-                    print(f"Employee ID: {emp.employee_id}")
-                    for field, value in vars(emp).items():
-                        print(f"{field}: {value}")
+                    display_record(emp, "Current Employee Details")
                     
                     print("\nSelect field to update (press Enter to keep current value):")
                     
@@ -110,8 +144,15 @@ def employee_menu():
                     new_termination_date = input(f"Termination Date [{emp.termination_date or 'None'}]: ")
                     emp.termination_date = new_termination_date if new_termination_date else emp.termination_date
                     
-                    dao.update_employee(emp)
-                    print("Employee updated successfully.")
+                    if confirm_action("Save changes? (y/n): "):
+                        dao.update_employee(emp)
+                        print("\n✅ Employee updated successfully!")
+                        # Display the updated employee with highlighted ID
+                        updated_emp = dao.get_employee_by_id(emp_id)
+                        display_record(updated_emp, "UPDATED EMPLOYEE RECORD")
+                        print(f"\n📌 Employee ID #{updated_emp.employee_id} has been updated.")
+                    else:
+                        print("Update cancelled.")
                 else:
                     raise EmployeeNotFoundException(f"Employee with ID {emp_id} not found.")
 
@@ -120,8 +161,13 @@ def employee_menu():
                 emp = dao.get_employee_by_id(emp_id)
                 if not emp:
                     raise EmployeeNotFoundException(f"Employee with ID {emp_id} not found.")
-                dao.delete_employee(emp_id)
-                print("Employee deleted successfully.")
+                
+                display_record(emp, "Employee to Delete")
+                if confirm_action("Are you sure you want to delete this employee? (y/n): "):
+                    dao.delete_employee(emp_id)
+                    print(f"\n✅ Employee with ID #{emp_id} deleted successfully.")
+                else:
+                    print("Deletion cancelled.")
 
             elif choice == 6:
                 break
@@ -159,37 +205,31 @@ def payroll_menu():
                     float(input("Net Salary: "))
                 )
                 dao.add_payroll(pay)
-                print("Payroll added successfully.")
+                print("\n✅ Payroll added successfully!")
+                
+                # Display the newly added payroll with its ID in a more visible format
+                added_pay = dao.get_payroll_by_id(pay.payroll_id)
+                if added_pay:
+                    display_record(added_pay, "NEW PAYROLL RECORD - ASSIGNED ID")
+                    print(f"\n📌 IMPORTANT: Remember payroll ID #{added_pay.payroll_id} for future reference!")
 
             elif choice == 2:
                 pay_id = int(input("Enter Payroll ID: "))
                 pay = dao.get_payroll_by_id(pay_id)
                 if pay:
-                    print(f"\nPayroll ID: {pay.payroll_id}")
-                    for field, value in vars(pay).items():
-                        print(f"{field}: {value}")
+                    display_record(pay, "Payroll Details")
                 else:
                     raise PayrollGenerationException(f"Payroll with ID {pay_id} not found.")
 
             elif choice == 3:
                 payrolls = dao.get_all_payrolls()
-                if not payrolls:
-                    print("No payroll records found.")
-                else:
-                    for pay in payrolls:
-                        print(f"\nPayroll ID: {pay.payroll_id}")
-                        for field, value in vars(pay).items():
-                            print(f"{field}: {value}")
-                        print("-" * 40)
+                display_records(payrolls, "All Payrolls")
 
             elif choice == 4:
                 pay_id = int(input("Enter Payroll ID to Update: "))
                 pay = dao.get_payroll_by_id(pay_id)
                 if pay:
-                    print("\nCurrent Payroll Details:")
-                    print(f"Payroll ID: {pay.payroll_id}")
-                    for field, value in vars(pay).items():
-                        print(f"{field}: {value}")
+                    display_record(pay, "Current Payroll Details")
                     
                     print("\nSelect field to update (press Enter to keep current value):")
                     
@@ -214,8 +254,15 @@ def payroll_menu():
                     new_net_salary = input(f"Net Salary [{pay.net_salary}]: ")
                     pay.net_salary = float(new_net_salary) if new_net_salary else pay.net_salary
                     
-                    dao.update_payroll(pay)
-                    print("Payroll updated successfully.")
+                    if confirm_action("Save changes? (y/n): "):
+                        dao.update_payroll(pay)
+                        print("\n✅ Payroll updated successfully!")
+                        # Display the updated payroll with highlighted ID
+                        updated_pay = dao.get_payroll_by_id(pay_id)
+                        display_record(updated_pay, "UPDATED PAYROLL RECORD")
+                        print(f"\n📌 Payroll ID #{updated_pay.payroll_id} has been updated.")
+                    else:
+                        print("Update cancelled.")
                 else:
                     raise PayrollGenerationException(f"Payroll with ID {pay_id} not found.")
 
@@ -224,8 +271,13 @@ def payroll_menu():
                 pay = dao.get_payroll_by_id(pay_id)
                 if not pay:
                     raise PayrollGenerationException(f"Payroll with ID {pay_id} not found.")
-                dao.delete_payroll(pay_id)
-                print("Payroll deleted successfully.")
+                
+                display_record(pay, "Payroll to Delete")
+                if confirm_action("Are you sure you want to delete this payroll record? (y/n): "):
+                    dao.delete_payroll(pay_id)
+                    print(f"\n✅ Payroll with ID #{pay_id} deleted successfully.")
+                else:
+                    print("Deletion cancelled.")
 
             elif choice == 6:
                 break
@@ -260,37 +312,31 @@ def tax_menu():
                     float(input("Tax Amount: "))
                 )
                 dao.add_tax_record(tax)
-                print("Tax record added successfully.")
+                print("\n✅ Tax record added successfully!")
+                
+                # Display the newly added tax record with its ID in a more visible format
+                added_tax = dao.get_tax_by_id(tax.tax_id)
+                if added_tax:
+                    display_record(added_tax, "NEW TAX RECORD - ASSIGNED ID")
+                    print(f"\n📌 IMPORTANT: Remember tax ID #{added_tax.tax_id} for future reference!")
 
             elif choice == 2:
                 tax_id = int(input("Enter Tax ID: "))
                 tax = dao.get_tax_by_id(tax_id)
                 if tax:
-                    print(f"\nTax ID: {tax.tax_id}")
-                    for field, value in vars(tax).items():
-                        print(f"{field}: {value}")
+                    display_record(tax, "Tax Record Details")
                 else:
                     raise TaxCalculationException(f"Tax record with ID {tax_id} not found.")
 
             elif choice == 3:
-                taxes = dao.get_all_tax_records()
-                if not taxes:
-                    print("No tax records found.")
-                else:
-                    for tax in taxes:
-                        print(f"\nTax ID: {tax.tax_id}")
-                        for field, value in vars(tax).items():
-                            print(f"{field}: {value}")
-                        print("-" * 40)
+                taxes = dao.get_all_taxes()
+                display_records(taxes, "All Tax Records")
 
             elif choice == 4:
                 tax_id = int(input("Enter Tax ID to Update: "))
                 tax = dao.get_tax_by_id(tax_id)
                 if tax:
-                    print("\nCurrent Tax Record Details:")
-                    print(f"Tax ID: {tax.tax_id}")
-                    for field, value in vars(tax).items():
-                        print(f"{field}: {value}")
+                    display_record(tax, "Current Tax Record Details")
                     
                     print("\nSelect field to update (press Enter to keep current value):")
                     
@@ -306,8 +352,15 @@ def tax_menu():
                     new_tax_amount = input(f"Tax Amount [{tax.tax_amount}]: ")
                     tax.tax_amount = float(new_tax_amount) if new_tax_amount else tax.tax_amount
                     
-                    dao.update_tax_record(tax)
-                    print("Tax record updated successfully.")
+                    if confirm_action("Save changes? (y/n): "):
+                        dao.update_tax_record(tax)
+                        print("\n✅ Tax record updated successfully!")
+                        # Display the updated tax record with highlighted ID
+                        updated_tax = dao.get_tax_by_id(tax_id)
+                        display_record(updated_tax, "UPDATED TAX RECORD")
+                        print(f"\n📌 Tax ID #{updated_tax.tax_id} has been updated.")
+                    else:
+                        print("Update cancelled.")
                 else:
                     raise TaxCalculationException(f"Tax record with ID {tax_id} not found.")
 
@@ -316,8 +369,13 @@ def tax_menu():
                 tax = dao.get_tax_by_id(tax_id)
                 if not tax:
                     raise TaxCalculationException(f"Tax record with ID {tax_id} not found.")
-                dao.delete_tax_record(tax_id)
-                print("Tax record deleted successfully.")
+                
+                display_record(tax, "Tax Record to Delete")
+                if confirm_action("Are you sure you want to delete this tax record? (y/n): "):
+                    dao.delete_tax_record(tax_id)
+                    print(f"\n✅ Tax record with ID #{tax_id} deleted successfully.")
+                else:
+                    print("Deletion cancelled.")
 
             elif choice == 6:
                 break
@@ -353,37 +411,31 @@ def financial_record_menu():
                     input("Record Type: ")
                 )
                 dao.add_financial_record(fr)
-                print("Financial record added successfully.")
+                print("\n✅ Financial record added successfully!")
+                
+                # Display the newly added financial record with its ID in a more visible format
+                added_fr = dao.get_financial_record_by_id(fr.record_id)
+                if added_fr:
+                    display_record(added_fr, "NEW FINANCIAL RECORD - ASSIGNED ID")
+                    print(f"\n📌 IMPORTANT: Remember financial record ID #{added_fr.record_id} for future reference!")
 
             elif choice == 2:
                 fr_id = int(input("Enter Record ID: "))
                 fr = dao.get_financial_record_by_id(fr_id)
                 if fr:
-                    print(f"\nFinancial Record ID: {fr.record_id}")
-                    for field, value in vars(fr).items():
-                        print(f"{field}: {value}")
+                    display_record(fr, "Financial Record Details")
                 else:
                     raise FinancialRecordException(f"Financial record with ID {fr_id} not found.")
 
             elif choice == 3:
                 records = dao.get_all_financial_records()
-                if not records:
-                    print("No financial records found.")
-                else:
-                    for fr in records:
-                        print(f"\nFinancial Record ID: {fr.record_id}")
-                        for field, value in vars(fr).items():
-                            print(f"{field}: {value}")
-                        print("-" * 40)
+                display_records(records, "All Financial Records")
 
             elif choice == 4:
                 fr_id = int(input("Enter Record ID to Update: "))
                 fr = dao.get_financial_record_by_id(fr_id)
                 if fr:
-                    print("\nCurrent Financial Record Details:")
-                    print(f"Financial Record ID: {fr.record_id}")
-                    for field, value in vars(fr).items():
-                        print(f"{field}: {value}")
+                    display_record(fr, "Current Financial Record Details")
                     
                     print("\nSelect field to update (press Enter to keep current value):")
                     
@@ -402,8 +454,15 @@ def financial_record_menu():
                     new_record_type = input(f"Record Type [{fr.record_type}]: ")
                     fr.record_type = new_record_type if new_record_type else fr.record_type
                     
-                    dao.update_financial_record(fr)
-                    print("Financial record updated successfully.")
+                    if confirm_action("Save changes? (y/n): "):
+                        dao.update_financial_record(fr)
+                        print("\n✅ Financial record updated successfully!")
+                        # Display the updated financial record with highlighted ID
+                        updated_fr = dao.get_financial_record_by_id(fr_id)
+                        display_record(updated_fr, "UPDATED FINANCIAL RECORD")
+                        print(f"\n📌 Financial Record ID #{updated_fr.record_id} has been updated.")
+                    else:
+                        print("Update cancelled.")
                 else:
                     raise FinancialRecordException(f"Financial record with ID {fr_id} not found.")
 
@@ -412,8 +471,13 @@ def financial_record_menu():
                 fr = dao.get_financial_record_by_id(fr_id)
                 if not fr:
                     raise FinancialRecordException(f"Financial record with ID {fr_id} not found.")
-                dao.delete_financial_record(fr_id)
-                print("Financial record deleted successfully.")
+                
+                display_record(fr, "Financial Record to Delete")
+                if confirm_action("Are you sure you want to delete this financial record? (y/n): "):
+                    dao.delete_financial_record(fr_id)
+                    print(f"\n✅ Financial record with ID #{fr_id} deleted successfully.")
+                else:
+                    print("Deletion cancelled.")
 
             elif choice == 6:
                 break
@@ -445,8 +509,9 @@ def main():
             elif choice == 4:
                 financial_record_menu()
             elif choice == 5:
-                print("Exiting... Thank You!")
-                break
+                if confirm_action("Are you sure you want to exit? (y/n): "):
+                    print("Logging OUT...")
+                    break
             else:
                 print("Invalid Choice.")
 
