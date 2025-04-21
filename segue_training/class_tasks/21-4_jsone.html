@@ -1,0 +1,45 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form validation</title>
+</head>
+<body>
+    <h1>Sign up</h1>
+    <form onsubmit="return validateForm()">
+        <label for="name">Name</label><br>
+        <input type="text" id="name"><br><br>
+ 
+        <label for="email">Email</label><br>
+        <input type="text" id="email"><br><br>
+ 
+        <input type="submit" value="Submit">
+    </form>
+    <p id="error" style="color: red;"></p>
+    <script>
+        function validateForm(){
+            const name=document.getElementById("name").value.trim();
+            const email=document.getElementById("email").value.trim();
+            const errormessage = document.getElementById("error");
+ 
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+ 
+            if(name === ""||email===""){
+                errormessage.textContent="please fill the fields";
+                return false
+            }
+ 
+            if(!emailPattern.test(email)){
+                errormessage.textContent="please enter valid email id";
+                return false;
+            }
+            errormessage.textContent="";
+            alert("Form submitted successfully")
+            return true;
+        }
+    </script>
+</body>
+</html>
+ 

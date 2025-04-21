@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile Web App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .input-section {
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, button {
+            padding: 8px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .profile-section {
+            margin-top: 30px;
+            display: none;
+        }
+        
+        .profile-card {
+            background-color: #f9f9f9;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        
+        .marks-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .marks-list li {
+            padding: 5px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .average {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 18px;
+        }
+        
+        .grade {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .grade-a {
+            background-color: #27ae60;
+        }
+        
+        .grade-b {
+            background-color: #f39c12;
+        }
+        
+        .grade-c {
+            background-color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Profile App</h1>
+    
+    <div class="container">
+        <div class="input-section">
+            <h2>Enter Student Information</h2>
+            
+            <div class="form-group">
+                <label for="name">Student Name:</label>
+                <input type="text" id="name" placeholder="Enter full name">
+            </div>
+            
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" placeholder="Enter age">
+            </div>
+            
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" placeholder="Enter subject name">
+            </div>
+            
+            <div class="form-group">
+                <label for="marks">Marks (out of 100):</label>
+                <input type="number" id="marks" placeholder="Enter marks (0-100)" min="0" max="100">
+            </div>
+            
+            <button id="addMarks">Add Subject & Marks</button>
+            <button id="createProfile">Create Student Profile</button>
+        </div>
+        
+        <div id="profileSection" class="profile-section">
+            <h2>Student Profile</h2>
+            <div class="profile-card">
+                <h3 id="studentName"></h3>
+                <p id="studentAge"></p>
+                
+                <h4>Subjects & Marks:</h4>
+                <ul id="marksList" class="marks-list"></ul>
+                
+                <p class="average">Average: <span id="averageMarks"></span>%</p>
+                <p>Grade: <span id="grade" class="grade"></span></p>
+            </div>
+            
+            <button id="resetApp">Start New Profile</button>
+        </div>
+    </div>
+
+    <script>
+        // Introduction to JS - Welcome alert
+        alert("Welcome to the Student Profile App!");
+        
+        // Data Types & Variables
+        // Using let for variables that will change
+        let studentName = "";
+        let studentAge = 0;
+        
+        // Using const for variables that won't change
+        const PASS_THRESHOLD = 40;
+        const DISTINCTION_THRESHOLD = 75;
+        
+        // Array to store subject marks
+        const subjectsArray = [];
+        const marksArray = [];
+        
+        // Create Student object using object literal
+        const student = {
+            name: "",
+            age: 0,
+            subjects: [],
+            marks: [],
+            
+            // Method to calculate average marks
+            calculateAverage: function() {
+                // Using a loop to sum up marks
+                let sum = 0;
+                for(let i = 0; i < this.marks.length; i++) {
+                    sum += this.marks[i];
+                }
+                
+                // Handle division by zero
+                if(this.marks.length === 0) {
+                    return 0;
+                }
+                
+                // Operators - division and rounding
+                return Math.round(sum / this.marks.length);
+            },
+            
+            // Method to determine grade based on average
+            getGrade: function() {
+                const average = this.calculateAverage();
+                
+                // Using if-else statements for grade determination
+                if(average >= DISTINCTION_THRESHOLD) {
+                    return "A";
+                } else if(average >= PASS_THRESHOLD) {
+                    return "B";
+                } else {
+                    return "C";
+                }
+            },
+            
+            // Method to display student info
+            displayInfo: function() {
+                // DOM Manipulation to display student information
+                document.getElementById("studentName").textContent = this.name;
+                document.getElementById("studentAge").textContent = `Age: ${this.age} years`;
+                
+                // Clear previous marks list
+                const marksList = document.getElementById("marksList");
+                marksList.innerHTML = "";
+                
+                // Loop through subjects and marks to display them
+                for(let i = 0; i < this.subjects.length; i++) {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = `${this.subjects[i]}: ${this.marks[i]}%`;
+                    marksList.appendChild(listItem);
+                }
+                
+                // Display average marks
+                document.getElementById("averageMarks").textContent = this.calculateAverage();
+                
+                // Display grade with appropriate styling
+                const gradeElement = document.getElementById("grade");
+                const grade = this.getGrade();
+                gradeElement.textContent = grade;
+                
+                // Remove previous grade classes
+                gradeElement.classList.remove("grade-a", "grade-b", "grade-c");
+                
+                // Add appropriate grade class
+                if(grade === "A") {
+                    gradeElement.classList.add("grade-a");
+                } else if(grade === "B") {
+                    gradeElement.classList.add("grade-b");
+                } else {
+                    gradeElement.classList.add("grade-c");
+                }
+                
+                // Show the profile section
+                document.getElementById("profileSection").style.display = "block";
+            }
+        };
+        
+        // Event Handlers
+        document.getElementById("addMarks").addEventListener("click", function() {
+            const subject = document.getElementById("subject").value.trim();
+            const marks = Number(document.getElementById("marks").value);
+            
+            // Input validation
+            if(subject === "") {
+                alert("Please enter a subject name!");
+                return;
+            }
+            
+            if(isNaN(marks) || marks < 0 || marks > 100) {
+                alert("Please enter valid marks between 0 and 100!");
+                return;
+            }
+            
+            // Add to arrays
+            subjectsArray.push(subject);
+            marksArray.push(marks);
+            
+            // Confirm to user
+            alert(`Added ${subject} with marks: ${marks}%`);
+            
+            // Clear input fields for next entry
+            document.getElementById("subject").value = "";
+            document.getElementById("marks").value = "";
+        });
+        
+        document.getElementById("createProfile").addEventListener("click", function() {
+            // Get student name and age
+            const name = document.getElementById("name").value.trim();
+            const age = Number(document.getElementById("age").value);
+            
+            // Input validation
+            if(name === "") {
+                alert("Please enter student name!");
+                return;
+            }
+            
+            if(isNaN(age) || age <= 0) {
+                alert("Please enter a valid age!");
+                return;
+            }
+            
+            if(subjectsArray.length === 0 || marksArray.length === 0) {
+                alert("Please add at least one subject and marks!");
+                return;
+            }
+            
+            // Popup box - confirm
+            const confirmed = confirm(`Create profile for ${name}, age ${age} with ${subjectsArray.length} subjects?`);
+            
+            if(confirmed) {
+                // Update student object
+                student.name = name;
+                student.age = age;
+                student.subjects = [...subjectsArray]; // Copy arrays
+                student.marks = [...marksArray];
+                
+                // Display the student information
+                student.displayInfo();
+            }
+        });
+        
+        document.getElementById("resetApp").addEventListener("click", function() {
+            // Popup box - prompt with default value
+            const resetConfirmed = prompt("Type 'reset' to start a new profile:", "");
+            
+            if(resetConfirmed && resetConfirmed.toLowerCase() === "reset") {
+                // Reset variables
+                studentName = "";
+                studentAge = 0;
+                
+                // Clear arrays
+                subjectsArray.length = 0;
+                marksArray.length = 0;
+                
+                // Clear input fields
+                document.getElementById("name").value = "";
+                document.getElementById("age").value = "";
+                document.getElementById("subject").value = "";
+                document.getElementById("marks").value = "";
+                
+                // Hide profile section
+                document.getElementById("profileSection").style.display = "none";
+                
+                alert("Profile reset! You can create a new one.");
+            }
+        });
+    </script>
+</body>
+</html>

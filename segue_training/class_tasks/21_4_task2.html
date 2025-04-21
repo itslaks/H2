@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2: Registration Form</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        
+        /* Form styling */
+        form {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        /* Button styling */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        /* Error message styling */
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        /* Success message styling */
+        .success {
+            color: green;
+            font-weight: bold;
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Registration Form</h1>
+    
+    <form id="registrationForm">
+        <!-- Name field -->
+        <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+            <div id="nameError" class="error"></div>
+        </div>
+        
+        <!-- Age field -->
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="1" required>
+            <div id="ageError" class="error"></div>
+        </div>
+        
+        <!-- Gender field -->
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <div id="genderError" class="error"></div>
+        </div>
+        
+        <!-- Marks field -->
+        <div class="form-group">
+            <label for="marks">Marks Received (%):</label>
+            <input type="number" id="marks" name="marks" min="0" max="100" required>
+            <div id="marksError" class="error"></div>
+        </div>
+        
+        <!-- Submit button -->
+        <button type="submit">Submit</button>
+        
+        <!-- Success message container -->
+        <div id="successMessage" class="success"></div>
+    </form>
+    
+    <script>
+        // Step 1: Get the form element
+        const registrationForm = document.getElementById('registrationForm');
+        
+        // Step 2: Add a submit event listener to the form
+        registrationForm.addEventListener('submit', function(event) {
+            // Prevent the form from submitting automatically
+            event.preventDefault();
+            
+            // Clear any previous error messages
+            clearErrors();
+            
+            // Get all the form values
+            const name = document.getElementById('name').value.trim();
+            const age = parseInt(document.getElementById('age').value);
+            const gender = document.getElementById('gender').value;
+            const marks = parseFloat(document.getElementById('marks').value);
+            
+            // Call our validation functions
+            const isNameValid = validateName(name);
+            const isAgeValid = validateAge(age, gender);
+            const isMarksValid = validateMarks(marks);
+            
+            // If all validations pass, show success message
+            if (isNameValid && isAgeValid && isMarksValid) {
+                document.getElementById('successMessage').textContent = "Registration successful!";
+                registrationForm.reset(); // Clear the form
+            }
+        });
+        
+        // Validation Function 1: Check if name is longer than 6 characters
+        function validateName(name) {
+            if (name.length <= 6) {
+                document.getElementById('nameError').textContent = "Name must be greater than 6 characters";
+                return false;
+            }
+            return true;
+        }
+        
+        // Validation Function 2: Check age based on gender
+        function validateAge(age, gender) {
+            if (gender === 'female' && age < 10) {
+                document.getElementById('ageError').textContent = "Girls must be at least 10 years old";
+                return false;
+            } else if (gender === 'male' && age < 12) {
+                document.getElementById('ageError').textContent = "Boys must be at least 12 years old";
+                return false;
+            } else if (!gender) {
+                document.getElementById('genderError').textContent = "Please select a gender";
+                return false;
+            }
+            return true;
+        }
+        
+        // Validation Function 3: Check if marks are greater than 60%
+        function validateMarks(marks) {
+            if (marks <= 60) {
+                document.getElementById('marksError').textContent = "Marks must be greater than 60%";
+                return false;
+            }
+            return true;
+        }
+        
+        // Function to clear all error messages
+        function clearErrors() {
+            const errorElements = document.querySelectorAll('.error');
+            errorElements.forEach(element => {
+                element.textContent = '';
+            });
+            document.getElementById('successMessage').textContent = '';
+        }
+    </script>
+</body>
+</html>

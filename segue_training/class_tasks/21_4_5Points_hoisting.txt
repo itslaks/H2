@@ -1,0 +1,9 @@
+JavaScript remembers  variables before  code runs.
+
+var becomes undefined if you use it before declaring.
+
+let and const give an error if used before declaring.
+
+Functions can be used before they're written.
+
+always declare variables at the top.
