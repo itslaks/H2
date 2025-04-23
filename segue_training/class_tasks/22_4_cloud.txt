@@ -1,0 +1,32 @@
+Cloud Computing:
+
+1. Cloud computing is the delivery of computing services like servers, storage, databases, and applications over the internet on a pay-as-you-go model.
+
+2. Cloud computing architecture includes frontend (client interface), backend (servers, storage), and the cloud delivery layer that connects them via the internet.
+
+3. The three types of cloud deployment models are public cloud, private cloud, and hybrid cloud.
+
+4. Infrastructure as a Service (IaaS) provides virtual machines, storage, and networking resources managed by the user.
+
+5. Platform as a Service (PaaS) offers a development platform where users can build and deploy apps without managing the infrastructure.
+
+6. Software as a Service (SaaS) delivers ready-made applications like email or CRM that users access over the internet.
+
+7. Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP) are the top cloud service providers globally.
+
+8. AWS offers services like EC2 for compute power, S3 for object storage, Lambda for serverless computing, and RDS for relational databases.
+
+9. EC2 (Elastic Compute Cloud) in AWS provides scalable virtual servers to run applications.
+
+10. Microsoft Azure offers virtual machines, storage, databases, AI services, and strong hybrid cloud support.
+
+11. Azure architecture consists of components like Azure Compute, Azure Storage, Azure Network, and Azure Active Directory.
+
+12. Public clouds are cost-effective and widely used for startups, mobile apps, backups, and testing environments.
+
+13. Cloud services are scalable, meaning you can increase or decrease your resource usage based on demand.
+
+14. Cloud platforms offer high availability and disaster recovery options, ensuring business continuity.
+
+15. Cloud computing reduces the need for physical hardware and maintenance, helping companies save infrastructure costs.
+
