@@ -76,3 +76,12 @@ INSERT INTO Appointment VALUES
 
 
 SELECT * FROM Appointment;
+
+
+CREATE TABLE NewRecords (
+    RecordId INT PRIMARY KEY,
+    RecordType VARCHAR(230),
+    doctorId INT,
+    appointmentDate DATETIME
+);
+
